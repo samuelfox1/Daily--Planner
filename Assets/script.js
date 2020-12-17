@@ -1,51 +1,155 @@
 console.log('linked!')
 
+//header clock features
 var day = moment().format('LL');
 var time = moment().format('LT');
-
-var eventsToday = [{
-    hour: '9am',
-    entry: '',
-}, {
-    hour: '10am',
-    entry: ''
-}]
-
-
-// WHEN I open the planner
-// THEN the current day is displayed at the top of the calendar
-
 $('#currentDay').append(day)
 $('#currentTime').append(time)
 
-var lockTxtBtn9am = true
-console.log($('.9amBtn').text())
+//refresh page every minute to keep clock up to date
+// setInterval(function () {
+//     location.reload()
+// }, 60000)
+
+
+var timeSlots = 10
+var hour = ''
+var event = ''
+var eventsToday = []
+var lockBtn0 = true
+var lockBtn = []
+var x = ''
+var y = ''
+var z = ''
+var a = ''
+
+buildLockBtnArray()
+
+function buildLockBtnArray() {
+
+    if (lockBtn < timeSlots) {
+        for (let i = 0; i < timeSlots; i++) {
+            var object = {
+                button: i,
+                status: true,
+            }
+            lockBtn.push(object)
+        }
+    }
+}
+
+
+//build local array
+buildEventsArray()
+
+function buildEventsArray() {
+    // if events today is short or empty, create the array, avoids building second time as well
+    if (eventsToday.length < timeSlots) {
+        //list will start at 7:00
+        var x = 7
+        for (let i = 0; i < timeSlots; i++) {
+            var object = {
+                hour: `${x}:00`,
+                entry: '',
+                listTxt: `.listTxt-${i}`,
+                listBtn: `.listBtn-${i}`,
+                listHr: `.hour-${i}`,
+            }
+            eventsToday.push(object)
+            x++
+        }
+    }
+}
 
 
 
 
-//9am lock/ unlockl text
-$('.9amBtn').on('click', function (event) {
+
+
+// list 0 instructions
+$('.listBtn-0').on('click', function (event) {
     event.preventDefault()
+    textBoxToggle('.listBtn-0', '.listTxt-0', 0)
+})
 
-    if (lockTxtBtn9am === true) {
+// list 1 instructions
+$('.listBtn-1').on('click', function (event) {
+    event.preventDefault()
+    textBoxToggle('.listBtn-1', '.listTxt-1', 1)
+})
+
+// list 2 instructions
+$('.listBtn-2').on('click', function (event) {
+    event.preventDefault()
+    textBoxToggle('.listBtn-2', '.listTxt-2', 2)
+})
+
+// list 3 instructions
+$('.listBtn-3').on('click', function (event) {
+    event.preventDefault()
+    textBoxToggle('.listBtn-3', '.listTxt-3', 3)
+})
+
+// list 4 instructions
+$('.listBtn-4').on('click', function (event) {
+    event.preventDefault()
+    textBoxToggle('.listBtn-4', '.listTxt-4', 4)
+})
+
+// list 5 instructions
+$('.listBtn-5').on('click', function (event) {
+    event.preventDefault()
+    textBoxToggle('.listBtn-5', '.listTxt-5', 5)
+})
+
+// list 6 instructions
+$('.listBtn-6').on('click', function (event) {
+    event.preventDefault()
+    textBoxToggle('.listBtn-6', '.listTxt-6', 6)
+})
+
+// list 7 instructions
+$('.listBtn-7').on('click', function (event) {
+    event.preventDefault()
+    textBoxToggle('.listBtn-7', '.listTxt-7', 7)
+})
+
+// list 8 instructions
+$('.listBtn-8').on('click', function (event) {
+    event.preventDefault()
+    textBoxToggle('.listBtn-8', '.listTxt-8', 8)
+})
+
+// list 9 instructions
+$('.listBtn-9').on('click', function (event) {
+    event.preventDefault()
+    textBoxToggle('.listBtn-9', '.listTxt-9', 9)
+})
+
+
+
+
+
+
+function textBoxToggle(x, y, z) {
+
+    if (lockBtn[z].status === true) {
         //unlock text box
-        lockTxtBtn9am = false
-        $('.9amText').removeAttr('disabled')
-        $('.9amBtn').text('lock')
+        lockBtn[z].status = false
+        $(y).removeAttr('disabled')
+        $(x).text('lock')
 
     } else {
         //lock text box
-        lockTxtBtn9am = true
-        var newEntry = $('.9amText').val()
-        $('.9amText').attr('disabled', 'disabled')
-        $('.9amBtn').text('unlock')
-        eventsToday[0].entry = newEntry
+        lockBtn[z].status = true
+        var newEntry = $(y).val()
+        $(y).attr('disabled', 'disabled')
+        $(x).text('unlock')
+        eventsToday[z].entry = newEntry
         localStorage.setItem("eventsToday", JSON.stringify(eventsToday))
-        console.log(eventsToday)
-
     }
-})
+}
+
 
 
 
@@ -55,6 +159,7 @@ $('.9amBtn').on('click', function (event) {
 //PULL DATA FROM LOCAL STORAGE
 function pullLocalStorage() {
 
+    //creat data array 'eventsToday' for local storage to work with
     //pull in events stored in local storage
     var storedEvents = JSON.parse(localStorage.getItem('eventsToday'))
 
@@ -62,19 +167,46 @@ function pullLocalStorage() {
     if (storedEvents !== null)
         eventsToday = storedEvents
 
-    loadPage()
+    for (let i = 0; i < eventsToday.length; i++) {
+
+        $(eventsToday[i].listHr).append().text(eventsToday[i].hour)
+        // convert stored event text to text on screen}
+        var storedEntry = eventsToday[i].entry
+        $(eventsToday[i].listTxt).val(storedEntry)
+
+    }
 }
 
 
-function loadPage() {
-    var storedEntry = eventsToday[0].entry
 
-    $('.9amText').val(storedEntry)
-}
 
 
 
 pullLocalStorage()
+
+
+
+
+
+
+
+//PULL DATA FROM LOCAL STORAGE
+// function pullLocalStorage() {
+
+    //creat data array 'eventsToday' for local storage to work with
+    //pull in events stored in local storage
+    // var storedEvents = JSON.parse(localStorage.getItem('eventsToday'))
+
+    //if events are pulled in, update eventsToday Array
+    // if (storedEvents !== null)
+    //     eventsToday = storedEvents
+
+    // $('.hour-0').append().text(eventsToday[0].hour)
+    // convert stored event text to text on screen}
+    // var storedEntry = eventsToday[0].entry
+    // $('.listTxt-0').val(storedEntry)
+
+// }
 
 // WHEN I scroll down
 // THEN I am presented with time blocks for standard business hours
