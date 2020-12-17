@@ -3,7 +3,13 @@ console.log('linked!')
 var day = moment().format('LL');
 var time = moment().format('LT');
 
-var eventsToday = []
+var eventsToday = [{
+    hour: '9am',
+    entry: '',
+}, {
+    hour: '10am',
+    entry: ''
+}]
 
 
 // WHEN I open the planner
@@ -16,7 +22,11 @@ var lockTxtBtn9am = true
 console.log($('.9amBtn').text())
 
 
+
+
+//9am lock/ unlockl text
 $('.9amBtn').on('click', function (event) {
+    event.preventDefault()
 
     if (lockTxtBtn9am === true) {
         //unlock text box
@@ -27,14 +37,18 @@ $('.9amBtn').on('click', function (event) {
     } else {
         //lock text box
         lockTxtBtn9am = true
+        var newEntry = $('.9amText').val()
         $('.9amText').attr('disabled', 'disabled')
         $('.9amBtn').text('unlock')
+        eventsToday[0].entry = newEntry
+        localStorage.setItem("eventsToday", JSON.stringify(eventsToday))
+        console.log(eventsToday)
+
     }
 })
 
 
 
-pullLocalStorage()
 
 
 
@@ -53,11 +67,14 @@ function pullLocalStorage() {
 
 
 function loadPage() {
-    //clear data
+    var storedEntry = eventsToday[0].entry
+
+    $('.9amText').val(storedEntry)
 }
 
 
 
+pullLocalStorage()
 
 // WHEN I scroll down
 // THEN I am presented with time blocks for standard business hours
