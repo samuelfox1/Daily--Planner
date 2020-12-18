@@ -73,3 +73,8 @@ form.container {
   font-size: 20px;
   transition: all .3s ease-in-out;
 }
+
+a{
+  color: #ff6961;
+  font-style: normal;
+}
