@@ -3,40 +3,30 @@ body {
   font-size: 16px;
   line-height: 1;
   text-align: center;
-  margin-bottom: 4rem;
-}
-
-
-/* .input-group {
-  margin: 10px;
-} */
-form.container {
-  text-align: center;
-  margin: 10px;
 }
 
 header.jumbotron {
   text-align: center;
   background-color: transparent;
   color: black;
-  padding: 32px;
+  margin: 0;
+  padding: 0;
   border-radius: 0;
   border-bottom: 5px solid black;
 }
 
-.description{
-  white-space: pre-wrap;
+.input-group {
+  margin: 10px;
 }
 
-.time-block{
+form{
   text-align: center;
-  border-radius: 15px;
-}
+  margin: 20px;
 
-.row {
-  white-space: pre-wrap;
-  height: 80px;
-  border-top: 1px solid white;;
+}
+form.container {  
+  padding-left: 0px;
+  padding-right: 25px;
 }
 
 .hour {
