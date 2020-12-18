@@ -1,6 +1,6 @@
 console.log('linked!')
 
-//header clock features
+//clock features
 var month = moment().format('MMMM')
 $('.display-3').text(month)
 var day = moment().format('dddd Do YYYY')
