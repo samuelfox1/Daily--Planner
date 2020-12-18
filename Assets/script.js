@@ -6,7 +6,6 @@ var time = moment().format('LT');
 $('#currentDay').append(day)
 $('#currentTime').append(time)
 var currentTime = moment().format('h')
-console.log(currentTime)
 
 
 
@@ -14,15 +13,21 @@ console.log(currentTime)
 function timeChecker() {
     for (let i = 0; i < 10; i++) {
 
+        var element = eventsToday[i].listTxt
 
         if (eventsToday[i].hour === `${currentTime}:00`) {
             console.log(`current hour = ${eventsToday[i].hour}`)
+            $(element).attr('id', 'present')
         }
         if (parseInt(eventsToday[i].hour) < parseInt(`${currentTime}:00`)) {
             console.log(`past hour = ${eventsToday[i].hour}`)
+            $(element).attr('id', 'past')
+
         }
         if (parseInt(eventsToday[i].hour) > parseInt(`${currentTime}:00`)) {
             console.log(`future hour = ${eventsToday[i].hour}`)
+            $(element).attr('id', 'future')
+
         }
 
 
@@ -40,7 +45,6 @@ var timeSlots = 10
 var hour = ''
 var event = ''
 var eventsToday = []
-var lockBtn0 = true
 var lockBtn = []
 var x = ''
 var y = ''
@@ -61,6 +65,7 @@ function buildLockBtnArray() {
             lockBtn.push(object)
         }
     }
+    console.log(lockBtn)
 }
 
 
@@ -84,6 +89,7 @@ function buildEventsArray() {
             x++
         }
     }
+    console.log(eventsToday)
 }
 
 
@@ -93,8 +99,6 @@ function buildEventsArray() {
 $('.listBtn-0').on('click', function (event) {
     event.preventDefault()
     textBoxToggle('.listBtn-0', '.listTxt-0', 0)
-    console.log(lockBtn)
-
 })
 
 // list 1 instructions
@@ -163,6 +167,7 @@ function textBoxToggle(x, y, z) {
         lockBtn[z].status = false
         $(y).removeAttr('disabled')
         $(x).text('lock')
+        $(x).attr('id', 'unlockedBtn')
 
     } else {
         //lock text box
@@ -170,9 +175,9 @@ function textBoxToggle(x, y, z) {
         var newEntry = $(y).val()
         $(y).attr('disabled', 'disabled')
         $(x).text('unlock')
+        $(x).attr('id', 'lockedBtn')
         eventsToday[z].entry = newEntry
         localStorage.setItem("eventsToday", JSON.stringify(eventsToday))
-        console.log(eventsToday)
     }
 }
 

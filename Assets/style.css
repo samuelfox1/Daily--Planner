@@ -6,15 +6,12 @@ body {
   margin-bottom: 4rem;
 }
 
-/* textarea{
-  background: transparent;
-  border: none;
-  resize: none;
-  color: #000000;
-  border-left: 1px solid black;
-  padding: timeSlotspx;
+
+/* .input-group {
+  margin: 10px;
 } */
-.input-group {
+form.container {
+  text-align: center;
   margin: 10px;
 }
 
@@ -47,33 +44,42 @@ header.jumbotron {
   justify-content: center;
   background-color: #ffffff;
   color: #000000;
-  border-top: 1px dashed #000000;
+  border: none;
 }
 
-.past {
+#past {
   background-color: #d3d3d3;
-  color: white;
+  color: rgb(126, 125, 125);
 }
 
-.present {
+#present {
   background-color: #ff6961;
-  color: white;
+  color: rgb(58, 58, 58);
 }
 
-.future {
+#future {
   background-color: #77dd77;
-  color: white;
+  color: rgb(46, 46, 46);
 }
 
-.saveBtn {
-  border-left: 1px solid black;
+#lockedBtn {
+  border: transparent;
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
   background-color: #06AED5;
   color: white;
 }
 
-.saveBtn i:hover {
+#unlockedBtn {
+  border: transparent;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+  border-left: 1px solid rgb(160, 72, 72);
+  background-color: #ff6961;
+  color: white;
+}
+
+#lockedBtn i:hover {
   font-size: 20px;
   transition: all .3s ease-in-out;
 }
