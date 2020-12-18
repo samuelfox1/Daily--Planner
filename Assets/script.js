@@ -1,13 +1,13 @@
 console.log('linked!')
 
-//clock features
+//header clock features
 var month = moment().format('MMMM')
 $('.display-3').text(month)
 var day = moment().format('dddd Do YYYY')
 var time = moment().format('kk:mm');
 $('#currentDay').append(day)
 $('#currentTime').append(time)
-var currentTime = moment().format('k')
+var currentTime = moment().format('kk')
 console.log(currentTime)
 
 
