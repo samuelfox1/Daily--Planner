@@ -1,49 +1,21 @@
 console.log('linked!')
+//check console log to view eventsToday and lockBtn object arrays
+//also to verify clock time in referenct to page time slots
 
-//header clock features
+
+//moment.js link to month and displayed on screen
 var month = moment().format('MMMM')
 $('.display-3').text(month)
+
+//moment.js link to day and time then displayed on the screen
 var day = moment().format('dddd Do YYYY')
 var time = moment().format('kk:mm');
 $('#currentDay').append(day)
 $('#currentTime').append(time)
-var currentTime = moment().format('kk')
-console.log(currentTime)
+var currentHour = moment().format('k')
 
 
-
-
-function timeChecker() {
-    for (let i = 0; i < 10; i++) {
-
-        var element = eventsToday[i].listTxt
-
-        if (eventsToday[i].hour === `${currentTime}:00`) {
-            console.log(`current hour = ${eventsToday[i].hour}`)
-            $(element).attr('id', 'present')
-        }
-        if (parseInt(eventsToday[i].hour) < parseInt(`${currentTime}:00`)) {
-            console.log(`past hour = ${eventsToday[i].hour}`)
-            $(element).attr('id', 'past')
-
-        }
-        if (parseInt(eventsToday[i].hour) > parseInt(`${currentTime}:00`)) {
-            console.log(`future hour = ${eventsToday[i].hour}`)
-            $(element).attr('id', 'future')
-
-        }
-
-
-    }
-
-}
-
-//refresh page every minute to keep clock up to date
-// setInterval(function () {
-//     location.reload()
-// }, 60000)
-
-
+//establish global variables
 var timeSlots = 10
 var hour = ''
 var event = ''
@@ -54,10 +26,35 @@ var y = ''
 var z = ''
 var a = ''
 
+
+//check each class tag string (stored in eventsToday[].hour) & compare to var currentHour.
+//append styling attributes to textboxes according to past, present or future hour status
+function timeChecker() {
+    console.log(`current hour = ${currentHour}:00`)
+    for (let i = 0; i < 10; i++) {
+        var element = eventsToday[i].listTxt
+
+        if (eventsToday[i].hour === `${currentHour}:00`) {
+            console.log(`current hour = ${eventsToday[i].hour}`)
+            $(element).attr('id', 'present')
+        }
+        if (parseInt(eventsToday[i].hour) < parseInt(`${currentHour}:00`)) {
+            console.log(`past hour = ${eventsToday[i].hour}`)
+            $(element).attr('id', 'past')
+
+        }
+        if (parseInt(eventsToday[i].hour) > parseInt(`${currentHour}:00`)) {
+            console.log(`future hour = ${eventsToday[i].hour}`)
+            $(element).attr('id', 'future')
+        }
+    }
+}
+
+//build object array to house toggle button booleans tracking our lock/unlock button position
+// UPDATE-- learned about 'this' keyword and targeting relaties -- would have been much easier
 buildLockBtnArray()
 
 function buildLockBtnArray() {
-
 
     if (lockBtn < timeSlots) {
         for (let i = 0; i < timeSlots; i++) {
@@ -98,71 +95,51 @@ function buildEventsArray() {
 
 
 
-// list 0 instructions
+// list of button click listeners tagged to each button and the values to use in textBoxToggle function
 $('.listBtn-0').on('click', function (event) {
     event.preventDefault()
     textBoxToggle('.listBtn-0', '.listTxt-0', 0)
 })
-
-// list 1 instructions
 $('.listBtn-1').on('click', function (event) {
     event.preventDefault()
     textBoxToggle('.listBtn-1', '.listTxt-1', 1)
 })
-
-// list 2 instructions
 $('.listBtn-2').on('click', function (event) {
     event.preventDefault()
     textBoxToggle('.listBtn-2', '.listTxt-2', 2)
 })
-
-// list 3 instructions
 $('.listBtn-3').on('click', function (event) {
     event.preventDefault()
     textBoxToggle('.listBtn-3', '.listTxt-3', 3)
 })
-
-// list 4 instructions
 $('.listBtn-4').on('click', function (event) {
     event.preventDefault()
     textBoxToggle('.listBtn-4', '.listTxt-4', 4)
 })
-
-// list 5 instructions
 $('.listBtn-5').on('click', function (event) {
     event.preventDefault()
     textBoxToggle('.listBtn-5', '.listTxt-5', 5)
 })
-
-// list 6 instructions
 $('.listBtn-6').on('click', function (event) {
     event.preventDefault()
     textBoxToggle('.listBtn-6', '.listTxt-6', 6)
 })
-
-// list 7 instructions
 $('.listBtn-7').on('click', function (event) {
     event.preventDefault()
     textBoxToggle('.listBtn-7', '.listTxt-7', 7)
 })
-
-// list 8 instructions
 $('.listBtn-8').on('click', function (event) {
     event.preventDefault()
     textBoxToggle('.listBtn-8', '.listTxt-8', 8)
 })
-
-// list 9 instructions
 $('.listBtn-9').on('click', function (event) {
     event.preventDefault()
     textBoxToggle('.listBtn-9', '.listTxt-9', 9)
 })
 
-
-
-
-
-
+// when a button is clicked, chek its boolean status.
+//If locked, unlocked and change styling and attributes accordingly.
+//If unlocked, change styling and attributes accordingly and store data in local storage
 function textBoxToggle(x, y, z) {
 
     if (lockBtn[z].status === true) {
@@ -185,73 +162,23 @@ function textBoxToggle(x, y, z) {
 }
 
 
-
-
-
-
-
-//PULL DATA FROM LOCAL STORAGE
+//check local storage for saved entries.
+//if local storage exists, use this data to display on screen.
+//loop through the eventsToday index object to retrieve .entry values and write them to their 
+//associated text boxes referenced from the eventsToday.listHr value
 function pullLocalStorage() {
-
-    //creat data array 'eventsToday' for local storage to work with
-    //pull in events stored in local storage
     var storedEvents = JSON.parse(localStorage.getItem('eventsToday'))
 
-    //if events are pulled in, update eventsToday Array
     if (storedEvents !== null)
         eventsToday = storedEvents
 
     for (let i = 0; i < eventsToday.length; i++) {
-
-        //classname pulled from events today object array, and appends hour value stored in object
         $(eventsToday[i].listHr).append().text(eventsToday[i].hour)
-        // convert stored event text to text on screen}
         var storedEntry = eventsToday[i].entry
         $(eventsToday[i].listTxt).val(storedEntry)
     }
     timeChecker()
 }
 
-
-
-
-
-
+//start process to retrieve local storage values
 pullLocalStorage()
-
-
-
-
-
-
-
-//PULL DATA FROM LOCAL STORAGE
-// function pullLocalStorage() {
-
-    //creat data array 'eventsToday' for local storage to work with
-    //pull in events stored in local storage
-    // var storedEvents = JSON.parse(localStorage.getItem('eventsToday'))
-
-    //if events are pulled in, update eventsToday Array
-    // if (storedEvents !== null)
-    //     eventsToday = storedEvents
-
-    // $('.hour-0').append().text(eventsToday[0].hour)
-    // convert stored event text to text on screen}
-    // var storedEntry = eventsToday[0].entry
-    // $('.listTxt-0').val(storedEntry)
-
-// }
-
-// WHEN I scroll down
-// THEN I am presented with time blocks for standard business hours
-// WHEN I view the time blocks for that day
-// THEN each time block is color-coded to indicate whether it is in the past, present, or future
-// WHEN I click into a time block
-// THEN I can enter an event
-// WHEN I click the save button for that time block
-// THEN the text for that event is saved in local storage
-// WHEN I refresh the page
-// THEN the saved events persist
-
-
