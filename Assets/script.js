@@ -5,6 +5,30 @@ var day = moment().format('LL');
 var time = moment().format('LT');
 $('#currentDay').append(day)
 $('#currentTime').append(time)
+var currentTime = moment().format('h')
+console.log(currentTime)
+
+
+
+
+function timeChecker() {
+    for (let i = 0; i < 10; i++) {
+
+
+        if (eventsToday[i].hour === `${currentTime}:00`) {
+            console.log(`current hour = ${eventsToday[i].hour}`)
+        }
+        if (parseInt(eventsToday[i].hour) < parseInt(`${currentTime}:00`)) {
+            console.log(`past hour = ${eventsToday[i].hour}`)
+        }
+        if (parseInt(eventsToday[i].hour) > parseInt(`${currentTime}:00`)) {
+            console.log(`future hour = ${eventsToday[i].hour}`)
+        }
+
+
+    }
+
+}
 
 //refresh page every minute to keep clock up to date
 // setInterval(function () {
@@ -26,6 +50,7 @@ var a = ''
 buildLockBtnArray()
 
 function buildLockBtnArray() {
+
 
     if (lockBtn < timeSlots) {
         for (let i = 0; i < timeSlots; i++) {
@@ -64,12 +89,12 @@ function buildEventsArray() {
 
 
 
-
-
 // list 0 instructions
 $('.listBtn-0').on('click', function (event) {
     event.preventDefault()
     textBoxToggle('.listBtn-0', '.listTxt-0', 0)
+    console.log(lockBtn)
+
 })
 
 // list 1 instructions
@@ -147,6 +172,7 @@ function textBoxToggle(x, y, z) {
         $(x).text('unlock')
         eventsToday[z].entry = newEntry
         localStorage.setItem("eventsToday", JSON.stringify(eventsToday))
+        console.log(eventsToday)
     }
 }
 
@@ -169,12 +195,13 @@ function pullLocalStorage() {
 
     for (let i = 0; i < eventsToday.length; i++) {
 
+        //classname pulled from events today object array, and appends hour value stored in object
         $(eventsToday[i].listHr).append().text(eventsToday[i].hour)
         // convert stored event text to text on screen}
         var storedEntry = eventsToday[i].entry
         $(eventsToday[i].listTxt).val(storedEntry)
-
     }
+    timeChecker()
 }
 
 
@@ -218,3 +245,5 @@ pullLocalStorage()
 // THEN the text for that event is saved in local storage
 // WHEN I refresh the page
 // THEN the saved events persist
+
+
