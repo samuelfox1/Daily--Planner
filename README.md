@@ -1,5 +1,7 @@
 # Daily-Planner
 
+https://samuelfox1.github.io/Daily-Planner/
+
 [unlocked task](Assets/screenshots/01-Daily-Planner-unlocked-task-bar.png)
 [locked task](Assets/screenshots/02-Daily-Planner-locked-taskbar.png)
 
