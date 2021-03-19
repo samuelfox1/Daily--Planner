@@ -1,30 +1,90 @@
+
 # Daily-Planner
 
-https://samuelfox1.github.io/Daily-Planner/
+>## Description 
 
-[unlocked task](Assets/screenshots/01-Daily-Planner-unlocked-task-bar.png)
-[locked task](Assets/screenshots/02-Daily-Planner-locked-taskbar.png)
+* the simple events throughout the day.
+* #### Story
+    * AS A: individual with a busy schedule
+    * I WANT: a daily task manager color coded to keep me focused
+    * SO THAT: I do not miss any important appointments
 
-This project was built to track the simple events throughout the day.
-The app features the date and time at the top of the page and holds a time slot for each business hour of the day.
+<br>
 
-A user can use the blue 'unlock' button on the right of each text box to activate the text box and add tasks for the day.
-After adding a new task, click the corresponding red lock button to deactivate the text infut, and also store your entry in your local browser storage.
-This way, your tasks will not be deleted until you complete them and remove them.
+>## Table of Contents
 
-The time slots for each day are dynamically colorcoded as well.
-Each morning, the time slots will all start out green.
-The current hour's box will be highlighted in red, the past boxes will turn grey.
-All future boxes will stay green, until the next hour approaches and highlight the new hour in red.
+* [Contributing](#Contributing)
+* [Description](#Description)
+* [Installation](#Installation)
+* [License](#License)
+* [Questions](#Questions)
+* [Story](#Story)
+* [Testing](#Testing)
+* [Usage](#Usage)
+<br>
 
-The app features a simplistic design using Twitter's bootstap html features. 
-The dynamic features are ran in javascript jQuery.
+[![license](https://img.shields.io/badge/License-MIT-blue)](#License)
+<br>
+
+[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg)](https://www.contributor-covenant.org/)
+<br>
+
+![Git](https://img.shields.io/badge/-Git-F05032?logo=git&logoColor=white)![VS Code](https://img.shields.io/badge/-VS%20Code-4D4D4D?logo=Visual%20Studio%20Code&logoColor=007ACC)![html](https://img.shields.io/badge/-HTML5-blue?logo=html5)![css](https://img.shields.io/badge/-CSS3-red?logo=css3)![javascript](https://img.shields.io/badge/-JavaScript-F7DF1E?logo=javascript&logoColor=black)
 
 
-The code is pretty lengthy and redundant at times. The project was great practice for me and has helped me develope my javascript and jQuery knowledge.
-After designing the apps lock/unlock buttons with booleans stashed in an array, I learned and understood the benefit of the 'this' keyword and targeting parent elements to handle redundant functions. This is something that would have made this project much much easier to develope, and easier for others to read the code! I had a fun time learning about arrrays and obects in arrays, utilizing the 'set' and 'get' methods for a browsers localStorage, and coming up with some unique ways to monitor button toggle positions.
 
-Thank you for reading,
+>## Product
 
---Samuel Fox--
- 
+* [Check it out!](https://samuelfox1.github.io/Daily-Planner/) 
+
+![Screenshot](./public/assets/images/screenshot.png)
+
+<br>
+
+>## Usage
+
+1. Navigate to the webpage
+2. Click the blue unlock button to add a task in the timeslot
+3. Click the red lock button when done adding the task
+4. watch the time slots change color as the day progresses
+5. Enjoy managing your time efficiently today.
+
+<br>
+
+>## Contributing
+
+* [Submit bugs and feature requests](https://github.com/samuelfox1/Daily-Planner/issues)
+* [Review changes](https://github.com/samuelfox1/Daily-Planner/pulls)
+* [Contributor Covenant Code of Conduct](https://www.contributor-covenant.org/)
+
+<br>
+
+>## Questions
+
+| Name | Email  | Github  | LinkedIn |
+| :--: | :----: | :-----: | :------: |
+| Samuel Fox | samueljasonfox@gmail.com | [![Github](./assets/images/logo/github.png)](https://github.com/samuelfox1) | [![LinkedIn](./assets/images/logo/linkedin.png)](https://www.linkedin.com/in/samuel-fox-tacoma) |
+
+<br>
+
+>## License
+
+MIT License
+
+Copyright 2020 Samuel Fox
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+<br>
+
+The images found in 'assets/images/logo/' are trademarks of their respective companies and are under their terms and license.
+<br>
+
+2020
+<br>
+
+>## [Top of page](#Daily-Planner)
