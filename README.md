@@ -3,7 +3,7 @@
 
 >## Description 
 
-* Tool to easily manage your daily schedule with color coded time slots.
+* A time management tool to manage your daily schedule with color coded time slots.
 
 * #### Story
     * AS AN: Individual with a busy schedule,
