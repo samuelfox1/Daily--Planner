@@ -3,11 +3,12 @@
 
 >## Description 
 
-* the simple events throughout the day.
+* Tool to easily manage your daily schedule with color coded time slots.
+
 * #### Story
-    * AS A: individual with a busy schedule
-    * I WANT: a daily task manager color coded to keep me focused
-    * SO THAT: I do not miss any important appointments
+    * AS AN: Individual with a busy schedule,
+    * I WANT: A daily task manager,
+    * SO THAT: I do not miss any important appointments.
 
 <br>
 
@@ -29,7 +30,7 @@
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg)](https://www.contributor-covenant.org/)
 <br>
 
-![Git](https://img.shields.io/badge/-Git-F05032?logo=git&logoColor=white)![VS Code](https://img.shields.io/badge/-VS%20Code-4D4D4D?logo=Visual%20Studio%20Code&logoColor=007ACC)![html](https://img.shields.io/badge/-HTML5-blue?logo=html5)![css](https://img.shields.io/badge/-CSS3-red?logo=css3)![javascript](https://img.shields.io/badge/-JavaScript-F7DF1E?logo=javascript&logoColor=black)
+![Git](https://img.shields.io/badge/-Git-F05032?logo=git&logoColor=white)![VS Code](https://img.shields.io/badge/-VS%20Code-4D4D4D?logo=Visual%20Studio%20Code&logoColor=007ACC)![html](https://img.shields.io/badge/-HTML5-blue?logo=html5)![css](https://img.shields.io/badge/-CSS3-red?logo=css3)![javascript](https://img.shields.io/badge/-JavaScript-F7DF1E?logo=javascript&logoColor=black)![Bootstrap](https://img.shields.io/badge/-Bootstrap-7952B3?logo=Bootstrap&logoColor=white)
 
 
 
@@ -37,7 +38,8 @@
 
 * [Check it out!](https://samuelfox1.github.io/Daily-Planner/) 
 
-![Screenshot](./public/assets/images/screenshot.png)
+![Screenshot](./assets/images/screenshot01.png)
+![Screenshot](./assets/images/screenshot02.png)
 
 <br>
 
